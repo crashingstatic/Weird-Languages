@@ -45,13 +45,21 @@ paradigms-course/
         │   ├── Dockerfile
         │   ├── devcontainer.json
         │   └── smoke-test.sh
+        ├── src/                        # ** Clojure-specific — see note below **
+        │   └── clojure_course/
+        │       └── <aspect_slug>/
+        │           ├── ex_01_<slug>.clj    # starter files
+        │           └── ...
+        ├── test/
+        │   └── clojure_course/
+        │       └── <aspect_slug>/
+        │           ├── ex_01_<slug>_test.clj
+        │           └── ...
         ├── 01-functional-foundations/
         │   ├── README.md
         │   └── exercises/
         │       ├── 01-<slug>/
         │       │   ├── PROBLEM.md
-        │       │   ├── starter.clj
-        │       │   ├── test.clj
         │       │   └── .solutions/
         │       │       └── solution.clj
         │       ├── 02-<slug>/
@@ -75,6 +83,35 @@ Aspect directories use `NN-kebab-slug`. Exercise directories use
 `NN-kebab-slug` inside `exercises/`. Two-digit zero-pad matters for sort order.
 The capstone is `capstone/` (no slug suffix) and is structurally different
 from aspects — it is one project, not 10 exercises.
+
+### Language-specific file layout: Clojure
+
+Clojure requires source filenames to match the last segment of the namespace
+they declare, and namespace segments map to directory paths (with hyphens
+replaced by underscores). This means generic names like `starter.clj` and
+`test.clj` cannot be used — the file must be named after the exercise
+namespace (e.g., `ex_01_hello_values.clj`).
+
+Because of this constraint, Clojure starter and test files live in centralized
+`src/` and `test/` trees under the language root, following standard Clojure
+project conventions:
+
+```
+languages/clojure/
+├── src/clojure_course/<aspect_slug>/ex_NN_<slug>.clj       # starters
+├── test/clojure_course/<aspect_slug>/ex_NN_<slug>_test.clj # tests
+└── NN-<aspect>/exercises/NN-<slug>/
+    ├── PROBLEM.md
+    └── .solutions/solution.clj
+```
+
+The exercise directory retains `PROBLEM.md` and `.solutions/` but does **not**
+contain `starter.clj` or `test.clj`. Each `PROBLEM.md` includes the path to
+the actual starter file so the student knows where to edit.
+
+**Other languages should follow the original layout** with `starter.<ext>` and
+`test.<ext>` inside the exercise directory, unless they have similar
+namespace-to-filesystem constraints that make this impossible.
 
 ## 3. Scaffolding tiers
 
@@ -137,11 +174,14 @@ in T3 exercises — without it the test won't find their code. Example:
 The exact shell command to run this exercise's test from the language root.
 ```
 
-### `starter.clj`
+### Starter file (`starter.clj` or language-specific equivalent)
 
 A runnable file with a namespace declaration matching the exercise path.
-Contains the function skeletons. For T1 fill-in-the-blank exercises, blanks
-are marked `___` (three underscores) with adjacent comments. Example:
+Contains the function skeletons. In Clojure, this file lives at
+`src/clojure_course/<aspect>/<ex_NN_slug>.clj` instead of in the exercise
+directory (see "Language-specific file layout" above). For T1
+fill-in-the-blank exercises, blanks are marked `___` (three underscores) with
+adjacent comments. Example:
 
 ```clojure
 (ns clojure-course.functional-foundations.ex-01-hello-values)
@@ -170,10 +210,12 @@ empty or a sentinel:
 For T3 exercises, the namespace is present and a comment lists the
 public functions to implement, but the student writes the signatures.
 
-### `test.clj`
+### Test file (`test.clj` or language-specific equivalent)
 
 Uses `clojure.test`. Loads the starter namespace and exercises its public
-API. **Tests verify behavior, not source.** Do not parse the student's
+API. In Clojure, this file lives at
+`test/clojure_course/<aspect>/<ex_NN_slug>_test.clj` (see "Language-specific
+file layout" above). **Tests verify behavior, not source.** Do not parse the student's
 source file, do not check for the presence of specific function calls, do
 not lint, do not `slurp`/`read-string` the starter. Just call the functions
 and assert on results.
@@ -245,9 +287,9 @@ explicit tier markers in exercise titles).
 For every exercise, the agent MUST follow this loop in this order:
 
 1. Write `PROBLEM.md`.
-2. Write `starter.clj`.
+2. Write the starter file (`starter.clj` or language-specific equivalent).
 3. Write `.solutions/solution.clj`.
-4. Write `test.clj`.
+4. Write the test file (`test.clj` or language-specific equivalent).
 5. **Run** the test against the solution. Confirm it passes.
 6. **Run** the test against the unmodified starter. Confirm it fails.
 7. If either gate fails, fix and re-run from step 5.
@@ -262,15 +304,27 @@ the `VERIFICATION_CHECKLIST.md` re-checks it.
 The agent must capture the actual test output (pass on solution, fail on
 starter) in their working notes so the human can spot-check.
 
-A typical mechanic for swapping starter and solution during the gate:
+A typical mechanic for swapping starter and solution during the gate.
+In Clojure, the starter file is in `src/` (not the exercise directory), so
+adjust the paths accordingly. The test runner flag is `-n` (not `--focus`).
 
 ```bash
+# Generic (languages where starter.clj lives in the exercise directory):
 cp .solutions/solution.clj /tmp/sol.clj
 cp starter.clj /tmp/starter.bak.clj
 cp /tmp/sol.clj starter.clj
 clojure -M:test --focus '<test-namespace>'   # → must PASS
 cp /tmp/starter.bak.clj starter.clj
 clojure -M:test --focus '<test-namespace>'   # → must FAIL
+
+# Clojure (starter lives in src/ tree):
+STARTER=src/clojure_course/<aspect>/ex_NN_<slug>.clj
+SOLUTION=NN-<aspect>/exercises/NN-<slug>/.solutions/solution.clj
+cp "$STARTER" /tmp/starter.bak.clj
+cp "$SOLUTION" "$STARTER"
+clojure -M:test -n '<test-namespace>'        # → must PASS
+cp /tmp/starter.bak.clj "$STARTER"
+clojure -M:test -n '<test-namespace>'        # → must FAIL
 ```
 
 ## 7. Idiomaticity rule
