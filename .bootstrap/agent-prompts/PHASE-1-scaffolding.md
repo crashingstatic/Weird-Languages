@@ -18,6 +18,12 @@ a working `languages/clojure/` directory tree ready for content.
 5. `.bootstrap/skills/exercise-author/SKILL.md`
 6. `.bootstrap/skills/clojure-testing/SKILL.md`
 
+**Note on Aspect 8 (interpreter) cumulation:** The spec says each exercise extends the
+previous one's code. This is a strong nice-to-have, not a hard requirement. If cumulation
+makes an exercise confusing or weakens the teaching point, break the chain — instead,
+sprinkle in reintroduction of concepts from earlier aspects to reinforce mastery. Teaching
+the concept clearly always wins over maintaining the cumulative code chain.
+
 After reading, summarize back to me in 5 bullets what the project is and what your
 constraints are. I will correct you if anything is off before you proceed.
 

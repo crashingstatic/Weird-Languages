@@ -1,0 +1,27 @@
+{:paths ["src" "01-functional-foundations/exercises"
+         "02-higher-order-and-sequences/exercises"
+         "03-recursion-and-recur/exercises"
+         "04-data-and-abstraction/exercises"
+         "05-polymorphism-and-protocols/exercises"
+         "06-state-identity-concurrency/exercises"
+         "07-macros-and-code-as-data/exercises"
+         "08-building-a-language/exercises"]
+
+ :deps {}
+
+ :aliases
+ {:test
+  {:extra-paths ["test"
+                 "01-functional-foundations/exercises"
+                 "02-higher-order-and-sequences/exercises"
+                 "03-recursion-and-recur/exercises"
+                 "04-data-and-abstraction/exercises"
+                 "05-polymorphism-and-protocols/exercises"
+                 "06-state-identity-concurrency/exercises"
+                 "07-macros-and-code-as-data/exercises"
+                 "08-building-a-language/exercises"]
+   :extra-deps
+   {io.github.cognitect-labs/test-runner
+    {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
+   :main-opts ["-m" "cognitect.test-runner"]
+   :exec-fn cognitect.test-runner.api/test}}}

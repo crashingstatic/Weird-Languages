@@ -1,67 +1,76 @@
-# Paradigms Course Bootstrap (v1: Clojure)
+# Paradigms Course
 
-This directory contains everything needed to author v1 of the Paradigms Course
-using Claude Code agents. v1 is **Clojure**, structured as a SICP-aligned
-undergraduate course with 8 aspects, 80 scaffolded exercises, and one capstone
-(mini-Datalog).
+A hands-on programming course that teaches new programming paradigms through
+SICP-inspired exercises. Each language module walks you through the paradigm
+shift that language embodies, building from first principles to a capstone
+project.
 
-## What's in here
+## Who this is for
+
+You have an undergraduate CS degree (or equivalent) and roughly three years of
+professional experience in C-family languages (C, C++, Java, Python, Go, Rust,
+etc.). You know what closures, recursion, hash tables, and unit tests are. You
+have used a debugger. You are not a beginner.
+
+This course does not teach you to program. It teaches you to program
+*differently* — to see problems through the lens of a paradigm your current
+toolkit doesn't give you.
+
+## Language modules
+
+| Module | Paradigm focus | Status |
+|--------|---------------|--------|
+| [Clojure](languages/clojure/) | Functional programming, data-driven design, metaprogramming | In progress |
+| Haskell | Type-driven design, purity, lazy evaluation | Planned |
+| Others | TBD | TBD |
+
+Each module is self-contained. You can do them in any order, though Clojure
+is recommended first — its syntax is minimal, which keeps the focus on concepts
+rather than grammar.
+
+## How to navigate
 
 ```
-paradigms-course-bootstrap/
-├── README.md                           # this file
-├── BOOTSTRAP.md                        # one-time human setup
-├── COURSE_AUTHORING_SPEC.md            # canonical project contract — agents read this first
-├── VERIFICATION_CHECKLIST.md           # human gate after each aspect/phase
-├── skills/
-│   ├── paradigm-course-spec/           # directory layout, file conventions, scaffolding tiers
-│   ├── exercise-author/                # the write→test→verify loop
-│   └── clojure-testing/                # Clojure-specific test idioms
-├── clojure/
-│   ├── ASPECTS.md                      # all 8 aspects with 10-exercise progressions
-│   └── CAPSTONE.md                     # mini-Datalog spec (8 milestones)
-└── agent-prompts/
-    ├── PHASE-1-scaffolding.md          # paste once at start
-    ├── PHASE-2-aspect-authoring.md     # paste 8 times (one per aspect)
-    ├── PHASE-3-capstone.md             # paste once after aspects ship
-    └── PHASE-4-student-devcontainer.md # paste last
+languages/
+└── clojure/
+    ├── README.md           # module orientation
+    ├── SYLLABUS.md         # ordered aspects with time estimates
+    ├── deps.edn            # shared dependencies
+    ├── 01-aspect-slug/     # one directory per aspect
+    │   ├── README.md       # what this aspect teaches
+    │   └── exercises/      # 10 exercises per aspect
+    │       └── 01-slug/
+    │           ├── PROBLEM.md
+    │           ├── starter.clj
+    │           ├── test.clj
+    │           └── .solutions/
+    │               └── solution.clj
+    └── capstone/           # culminating project
 ```
 
-## How to use this
+Each language module follows this structure. Start with the module's `README.md`,
+then work through the syllabus in order.
 
-1. Read `BOOTSTRAP.md`. Run the one-time human setup steps.
-2. Open Claude Code in the project repo. Paste `agent-prompts/PHASE-1-scaffolding.md`
-   into a fresh session. Watch it work. Run the **Per-aspect Phase 1 section**
-   of `VERIFICATION_CHECKLIST.md` (the structural bits) before moving on.
-3. For each of the 8 Clojure aspects, paste `agent-prompts/PHASE-2-aspect-authoring.md`
-   into a **fresh session**, substituting the aspect number where indicated.
-   Run the **Per-aspect checklist** in `VERIFICATION_CHECKLIST.md` after each
-   one. Do not start aspect N+1 until aspect N has shipped.
-4. After all 8 aspects have shipped, paste `agent-prompts/PHASE-3-capstone.md`.
-   Run the **Capstone checklist**.
-5. Finally, paste `agent-prompts/PHASE-4-student-devcontainer.md`. Run the
-   **Student devcontainer checklist**. After it ships, tag the repo
-   `v1.0-clojure`.
+## Running exercises
 
-## Design constraints these files encode
+Each module has its own toolchain. For Clojure:
 
-- **Audience:** undergrad CS + ~3 years C-family experience. No babying.
-- **SICP alignment:** the 8 Clojure aspects track SICP chapters where the
-  mapping is natural. Aspect 8 is a metacircular evaluator. The capstone is
-  not an evaluator (different shape).
-- **Scaffolding tiers:** every aspect has 10 exercises split into three
-  tiers — **T1** (01–03, fill-in-the-blank), **T2** (04–07, guided), **T3**
-  (08–10, open). Help decreases monotonically.
-- **Tests verify behavior, not source.** Test files import the student's
-  module and assert on results. Tests that grep source are forbidden.
-- **Solutions visible** in `.solutions/` subdirectories — checked in, not
-  gitignored, not encrypted. Soft signal to students that they exist.
-- **Per-language student devcontainer** is a deliverable artifact built and
-  smoke-tested in Phase 4. Agents do **not** author inside it. Agents install
-  Clojure tooling directly in their own environment during Phases 1–3.
+```bash
+cd languages/clojure
+clojure -M:test    # run all tests
+```
 
-## After v1: Haskell is v2
+See the module README for details on running individual exercises.
 
-When you're done with v1, come back and we'll plan Haskell from scratch.
-Aspects and capstone for Haskell will not be a copy-paste of Clojure — the
-languages teach different things and the course should reflect that.
+## Solutions
+
+Reference solutions live in `.solutions/` directories (dot-prefixed, so `ls`
+won't show them by default). They are not hidden or encrypted — check them
+whenever you're stuck. The dot prefix is a gentle nudge to try first, not a
+security boundary.
+
+## Contributing
+
+This course is built with agent-assisted authoring. The canonical spec lives
+in `.bootstrap/COURSE_AUTHORING_SPEC.md`. If you're contributing content,
+read that file first.

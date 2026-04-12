@@ -94,3 +94,29 @@ USER root
 RUN echo "node ALL=(root) NOPASSWD: /usr/bin/apt-get, /usr/bin/apt" > /etc/sudoers.d/node-apt && \
   chmod 0440 /etc/sudoers.d/node-apt
 USER node
+
+USER root
+# --- Clojure tooling ---
+# JDK (OpenJDK 17 from Debian repos) + rlwrap
+RUN apt-get update && apt-get install -y --no-install-recommends \
+  default-jdk \
+  rlwrap \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Clojure CLI (tools.deps)
+ARG CLOJURE_VERSION=1.12.0.1530
+RUN curl -fsSL "https://download.clojure.org/install/linux-install-${CLOJURE_VERSION}.sh" \
+  -o /tmp/clojure-install.sh \
+  && chmod +x /tmp/clojure-install.sh \
+  && /tmp/clojure-install.sh \
+  && rm /tmp/clojure-install.sh
+
+# clj-kondo linter
+ARG CLJ_KONDO_VERSION=2024.11.14
+RUN ARCH=$(dpkg --print-architecture) \
+  && curl -fsSL "https://github.com/clj-kondo/clj-kondo/releases/download/v${CLJ_KONDO_VERSION}/clj-kondo-${CLJ_KONDO_VERSION}-linux-${ARCH}.zip" \
+     -o /tmp/clj-kondo.zip \
+  && unzip -o /tmp/clj-kondo.zip -d /usr/local/bin \
+  && rm /tmp/clj-kondo.zip \
+  && chmod +x /usr/local/bin/clj-kondo
+USER node
