@@ -26,13 +26,45 @@ teaches.
 ### Dev environment
 
 The student devcontainer in `.devcontainer/` has everything pre-installed:
-JDK, Clojure CLI, clj-kondo (linter), and rlwrap (REPL ergonomics). Open
-this directory in VS Code with the Dev Containers extension, or use GitHub
-Codespaces.
+JDK 21, Clojure CLI 1.12.0.1530, clj-kondo (linter), and rlwrap (REPL
+ergonomics).
 
-> **Note:** The devcontainer is added in Phase 4 of course authoring. If it
-> doesn't exist yet, install Clojure manually:
-> [Clojure Getting Started](https://clojure.org/guides/getting_started).
+**Prerequisites:**
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (or any
+  Docker-compatible runtime)
+- [VS Code](https://code.visualstudio.com/) with the
+  [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+  extension installed
+
+**Setup:**
+
+1. Open the `languages/clojure/` folder in VS Code.
+2. When prompted, click **"Reopen in Container"** — or open the Command
+   Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run
+   **Dev Containers: Reopen in Container**.
+3. Wait for the container to build (first time takes a few minutes; subsequent
+   opens are fast).
+4. Open a terminal inside VS Code — you're ready to go.
+
+The container includes the [Calva](https://calva.io/) and
+[clj-kondo](https://github.com/clj-kondo/clj-kondo) VS Code extensions
+pre-configured.
+
+**Smoke test:** after the container is running, verify the toolchain:
+
+```bash
+bash .devcontainer/smoke-test.sh
+```
+
+**Troubleshooting:**
+
+- **Container won't build?** Make sure Docker is running. Try
+  **Dev Containers: Rebuild Container** from the Command Palette.
+- **Tests fail with "command not found"?** You're probably running outside the
+  container. Reopen in the devcontainer first.
+- **First REPL start is slow?** The image pre-downloads Clojure core jars, but
+  project dependencies are fetched on first use. This is normal.
 
 ### Running tests
 

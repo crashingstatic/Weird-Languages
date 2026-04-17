@@ -1,0 +1,20 @@
+{
+  "name": "Paradigms Course — Clojure",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "workspaceFolder": "/workspaces/clojure",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/clojure,type=bind,consistency=cached",
+  "remoteUser": "student",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "betterthantomorrow.calva",
+        "borkdude.clj-kondo"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  }
+}
