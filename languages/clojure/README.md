@@ -72,19 +72,23 @@ Clojure from scratch.
 
 ## How exercises work
 
-Each exercise lives in its own directory:
+Each exercise has three parts spread across the standard Clojure layout:
 
 ```
 01-functional-foundations/exercises/05-newton-sqrt/
-├── PROBLEM.md              # what to build and why
-├── starter.clj             # your working file — fill in the blanks or stubs
-├── test.clj                # behavioral tests (read-only)
+├── PROBLEM.md                          # what to build and why
 └── .solutions/
-    └── solution.clj        # reference implementation
+    └── solution.clj                    # reference implementation
+
+src/clojure_course/functional_foundations/
+└── ex_05_newton_sqrt.clj               # your working file (starter)
+
+test/clojure_course/functional_foundations/
+└── ex_05_newton_sqrt_test.clj          # behavioral tests (read-only)
 ```
 
 1. Read `PROBLEM.md`.
-2. Edit `starter.clj`.
+2. Edit the starter file in `src/`.
 3. Run the test command from `PROBLEM.md`.
 4. Iterate until tests pass.
 

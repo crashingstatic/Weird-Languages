@@ -1,0 +1,9 @@
+{:paths ["src" "../test"]
+
+ :aliases
+ {:test
+  {:extra-deps
+   {io.github.cognitect-labs/test-runner
+    {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
+   :main-opts ["-m" "cognitect.test-runner" "--dir" "../test"]
+   :exec-fn cognitect.test-runner.api/test}}}
