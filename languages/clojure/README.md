@@ -10,6 +10,11 @@ Lisp (aspect 08) and a mini-Datalog query engine (capstone). You will think
 about programs as expressions that produce values rather than statements that
 mutate state.
 
+> **Beta testing this course?** Each aspect folder has a `SURVEY.md` —
+> ~45 seconds, fill it in when you finish that aspect. A longer
+> `COURSE-SURVEY.md` lives at the module root for after the capstone. All
+> questions are optional. Save and send back to the course author.
+
 ## Prerequisites
 
 - An undergraduate CS degree or equivalent systems knowledge.
