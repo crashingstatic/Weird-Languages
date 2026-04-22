@@ -126,18 +126,29 @@ elif [ ! -f "$SOLUTION" ]; then
   echo "  SKIP  solution file not found at $SOLUTION"
 elif [ ! -f "$TARGET" ]; then
   echo "  SKIP  target starter file not found at $TARGET"
-elif ! git diff --quiet -- "$TARGET" 2>/dev/null; then
-  # Student has edits to the starter file — don't blow them away to run the
-  # smoke test. Tell them how to proceed.
-  echo "  SKIP  $TARGET has local changes; refusing to overwrite"
-  echo "        commit or stash your work, then re-run the smoke test"
 else
+  # Back up the student's current file to a temp location and register a
+  # trap so we restore it no matter what — including on Ctrl-C or if the
+  # test runner crashes. This works whether or not git is available inside
+  # the container (the student devcontainer mounts only languages/clojure/,
+  # so .git/ isn't visible).
+  BACKUP=$(mktemp)
+  cp "$TARGET" "$BACKUP"
+  restore_target() {
+    if [ -f "$BACKUP" ]; then
+      cp "$BACKUP" "$TARGET"
+      rm -f "$BACKUP"
+    fi
+  }
+  trap restore_target EXIT INT TERM
+
   test_rc=0
   cp "$SOLUTION" "$TARGET"
   # cognitect.test-runner uses -n (--namespace), not --focus.
   test_output=$(clojure -M:test -n clojure-course.functional-foundations.ex-01-hello-values-test 2>&1) || test_rc=$?
-  # Restore the starter file regardless of test outcome.
-  git checkout -- "$TARGET" 2>/dev/null || true
+
+  restore_target
+  trap - EXIT INT TERM
 
   if [ "$test_rc" -eq 0 ] && printf '%s' "$test_output" | grep -qE '0 failures,? 0 errors'; then
     echo "  PASS  exercise 01 tests pass against solution"
