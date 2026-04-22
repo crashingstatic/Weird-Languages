@@ -27,4 +27,4 @@ version is wrong.
 clojure -M:test -n clojure-course.macros-and-code-as-data.ex-10-when-not-to-write-a-macro-test
 ```
 
-**Starter file:** `src/clojure_course/macros_and_code_as_data/ex_10_when_not_to_write_a_macro.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/macros_and_code_as_data/ex_10_when_not_to_write_a_macro.clj`.

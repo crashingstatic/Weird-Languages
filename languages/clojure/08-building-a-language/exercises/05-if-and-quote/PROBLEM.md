@@ -25,4 +25,4 @@ The environment functions and eval dispatch are provided.
 clojure -M:test -n clojure-course.building-a-language.ex-05-if-and-quote-test
 ```
 
-**Starter file:** `src/clojure_course/building_a_language/ex_05_if_and_quote.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/building_a_language/ex_05_if_and_quote.clj`.

@@ -1,0 +1,1 @@
+../../../test/clojure_course/functional_foundations/ex_08_fast_power_test.clj

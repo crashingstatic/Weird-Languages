@@ -1,80 +1,152 @@
 #!/usr/bin/env bash
 # Smoke test for the Clojure student devcontainer.
 # Run from inside the container:  bash .devcontainer/smoke-test.sh
-# Exits 0 if everything works, non-zero on first failure.
+# Exits 0 if every check passes, 1 otherwise. On failure, the full output of
+# the failing command is printed so you can see *why* it failed.
 
-set -euo pipefail
+set -uo pipefail
 
 EXPECTED_CLJ="1.12.0.1530"
 EXPECTED_KONDO="2024.11.14"
 PASS=0
 FAIL=0
 
-check() {
+# Print a captured multi-line output block, indented, with a dim separator
+# before it so the failure stands out visually.
+print_output_block() {
+  local output="$1"
+  if [ -z "$output" ]; then
+    echo "        (command produced no output)"
+    return
+  fi
+  echo "        ---"
+  # Indent every line by 8 spaces so the block is clearly "attached" to the
+  # FAIL line above it.
+  printf '%s\n' "$output" | sed 's/^/        /'
+  echo "        ---"
+}
+
+# Run a command; mark PASS/FAIL based on its exit code. On FAIL, dump the
+# captured stdout+stderr so the student can see what broke.
+run_check() {
   local label="$1"; shift
-  if "$@" >/dev/null 2>&1; then
+  local output
+  local rc=0
+  output=$("$@" 2>&1) || rc=$?
+  if [ "$rc" -eq 0 ]; then
     echo "  PASS  $label"
-    ((PASS++))
+    PASS=$((PASS + 1))
   else
-    echo "  FAIL  $label"
-    ((FAIL++))
+    echo "  FAIL  $label (exit $rc)"
+    print_output_block "$output"
+    FAIL=$((FAIL + 1))
   fi
 }
 
-check_output() {
+# Run a command and require its output to contain a specific substring.
+# Dumps the full output on FAIL, not just the one line that matched.
+check_output_contains() {
   local label="$1" expected="$2"; shift 2
-  local actual
-  actual=$("$@" 2>&1)
-  if echo "$actual" | grep -qF "$expected"; then
+  local output
+  local rc=0
+  output=$("$@" 2>&1) || rc=$?
+  if [ "$rc" -ne 0 ]; then
+    echo "  FAIL  $label (command exited $rc)"
+    print_output_block "$output"
+    FAIL=$((FAIL + 1))
+    return
+  fi
+  if printf '%s' "$output" | grep -qF "$expected"; then
     echo "  PASS  $label"
-    ((PASS++))
+    PASS=$((PASS + 1))
   else
-    echo "  FAIL  $label (expected '$expected', got '$actual')"
-    ((FAIL++))
+    echo "  FAIL  $label (expected to find '$expected' in output)"
+    print_output_block "$output"
+    FAIL=$((FAIL + 1))
+  fi
+}
+
+# Check that a command exists on PATH. Dedicated helper so the error message
+# is obvious: "command not found" is the #1 cause of a failing smoke test.
+check_command_exists() {
+  local cmd="$1"
+  if command -v "$cmd" >/dev/null 2>&1; then
+    echo "  PASS  '$cmd' is on PATH ($(command -v "$cmd"))"
+    PASS=$((PASS + 1))
+  else
+    echo "  FAIL  '$cmd' not found on PATH"
+    echo "        PATH=$PATH"
+    echo "        (are you running this inside the devcontainer?)"
+    FAIL=$((FAIL + 1))
   fi
 }
 
 echo "=== Clojure Student Devcontainer Smoke Test ==="
 echo
 
-echo "1. Checking Clojure CLI version..."
-check_output "clojure version is $EXPECTED_CLJ" "$EXPECTED_CLJ" clojure --version
+echo "1. Checking tools are on PATH..."
+check_command_exists clojure
+check_command_exists clj-kondo
 
-echo "2. Checking clj-kondo version..."
-check_output "clj-kondo version is $EXPECTED_KONDO" "$EXPECTED_KONDO" clj-kondo --version
+echo
+echo "2. Checking Clojure CLI version is $EXPECTED_CLJ..."
+check_output_contains "clojure --version contains $EXPECTED_CLJ" "$EXPECTED_CLJ" clojure --version
 
-echo "3. Evaluating trivial Clojure expression..."
-RESULT=$(clojure -e '(+ 1 2)' 2>&1)
-if [ "$RESULT" = "3" ]; then
+echo
+echo "3. Checking clj-kondo version is $EXPECTED_KONDO..."
+check_output_contains "clj-kondo --version contains $EXPECTED_KONDO" "$EXPECTED_KONDO" clj-kondo --version
+
+echo
+echo "4. Evaluating a trivial Clojure expression..."
+eval_rc=0
+# Use -M -e (not implicit clojure.main) to avoid the deprecation warning
+# that would otherwise pollute the captured output.
+eval_output=$(clojure -M -e '(+ 1 2)' 2>&1) || eval_rc=$?
+# The Clojure CLI may print warnings (locale, deps resolution) before the
+# result; the actual value is on the last line.
+eval_last=$(printf '%s' "$eval_output" | tail -n 1)
+if [ "$eval_rc" -eq 0 ] && [ "$eval_last" = "3" ]; then
   echo "  PASS  (+ 1 2) => 3"
-  ((PASS++))
+  PASS=$((PASS + 1))
 else
-  echo "  FAIL  (+ 1 2) => expected '3', got '$RESULT'"
-  ((FAIL++))
+  echo "  FAIL  (+ 1 2) => expected last line '3', got last line '$eval_last' (exit $eval_rc)"
+  print_output_block "$eval_output"
+  FAIL=$((FAIL + 1))
 fi
 
-echo "4. Running first exercise test suite (against solution)..."
+echo
+echo "5. Running exercise 01's test suite against its reference solution..."
 EXERCISE_DIR="01-functional-foundations/exercises/01-hello-values"
-if [ -d "$EXERCISE_DIR" ]; then
-  # Copy solution into the src tree so the test has something to find
-  SOLUTION="$EXERCISE_DIR/.solutions/solution.clj"
-  TARGET="src/clojure_course/functional_foundations/ex_01_hello_values.clj"
-  if [ -f "$SOLUTION" ]; then
-    cp "$SOLUTION" "$TARGET"
-    if clojure -M:test --focus 'clojure-course.functional-foundations.ex-01-hello-values-test' 2>&1 | tail -1 | grep -q "0 failures"; then
-      echo "  PASS  exercise 01 tests pass against solution"
-      ((PASS++))
-    else
-      echo "  FAIL  exercise 01 tests did not pass"
-      ((FAIL++))
-    fi
-    # Restore the starter file
-    git checkout -- "$TARGET" 2>/dev/null || true
-  else
-    echo "  SKIP  solution file not found at $SOLUTION"
-  fi
-else
+SOLUTION="$EXERCISE_DIR/.solutions/solution.clj"
+TARGET="src/clojure_course/functional_foundations/ex_01_hello_values.clj"
+
+if [ ! -d "$EXERCISE_DIR" ]; then
   echo "  SKIP  exercise directory not found at $EXERCISE_DIR"
+elif [ ! -f "$SOLUTION" ]; then
+  echo "  SKIP  solution file not found at $SOLUTION"
+elif [ ! -f "$TARGET" ]; then
+  echo "  SKIP  target starter file not found at $TARGET"
+elif ! git diff --quiet -- "$TARGET" 2>/dev/null; then
+  # Student has edits to the starter file — don't blow them away to run the
+  # smoke test. Tell them how to proceed.
+  echo "  SKIP  $TARGET has local changes; refusing to overwrite"
+  echo "        commit or stash your work, then re-run the smoke test"
+else
+  test_rc=0
+  cp "$SOLUTION" "$TARGET"
+  # cognitect.test-runner uses -n (--namespace), not --focus.
+  test_output=$(clojure -M:test -n clojure-course.functional-foundations.ex-01-hello-values-test 2>&1) || test_rc=$?
+  # Restore the starter file regardless of test outcome.
+  git checkout -- "$TARGET" 2>/dev/null || true
+
+  if [ "$test_rc" -eq 0 ] && printf '%s' "$test_output" | grep -qE '0 failures,? 0 errors'; then
+    echo "  PASS  exercise 01 tests pass against solution"
+    PASS=$((PASS + 1))
+  else
+    echo "  FAIL  exercise 01 tests did not pass (exit $test_rc)"
+    print_output_block "$test_output"
+    FAIL=$((FAIL + 1))
+  fi
 fi
 
 echo

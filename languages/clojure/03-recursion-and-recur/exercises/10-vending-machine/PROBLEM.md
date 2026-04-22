@@ -40,4 +40,4 @@ Commands are two-element vectors `[action arg]`:
 clojure -M:test -n clojure-course.recursion-and-recur.ex-10-vending-machine-test
 ```
 
-**Starter file:** `src/clojure_course/recursion_and_recur/ex_10_vending_machine.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/recursion_and_recur/ex_10_vending_machine.clj`.

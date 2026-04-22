@@ -27,4 +27,4 @@ Must correctly cache `nil` results (not re-call `f` for nil).
 clojure -M:test -n clojure-course.state-identity-concurrency.ex-07-memoize-with-atom-test
 ```
 
-**Starter file:** `src/clojure_course/state_identity_concurrency/ex_07_memoize_with_atom.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/state_identity_concurrency/ex_07_memoize_with_atom.clj`.

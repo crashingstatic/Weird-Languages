@@ -30,4 +30,4 @@ Triangle area = `(* 0.5 base height)`.
 clojure -M:test -n clojure-course.polymorphism-and-protocols.ex-01-multimethod-shape-area-test
 ```
 
-**Starter file:** `src/clojure_course/polymorphism_and_protocols/ex_01_multimethod_shape_area.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/polymorphism_and_protocols/ex_01_multimethod_shape_area.clj`.

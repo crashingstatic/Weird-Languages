@@ -1,0 +1,1 @@
+../../../test/clojure_course/polymorphism_and_protocols/ex_03_defrecord_person_test.clj

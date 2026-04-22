@@ -39,4 +39,4 @@ anything that is sequential (satisfies `sequential?`).
 clojure -M:test -n clojure-course.recursion-and-recur.ex-07-tree-sum-test
 ```
 
-**Starter file:** `src/clojure_course/recursion_and_recur/ex_07_tree_sum.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/recursion_and_recur/ex_07_tree_sum.clj`.

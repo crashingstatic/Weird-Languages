@@ -41,4 +41,4 @@ empty-inventory                              ;; the empty inventory value
 clojure -M:test -n clojure-course.data-and-abstraction.ex-10-inventory-system-test
 ```
 
-**Starter file:** `src/clojure_course/data_and_abstraction/ex_10_inventory_system.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/data_and_abstraction/ex_10_inventory_system.clj`.

@@ -27,4 +27,4 @@ variable name (string). Walk the frames from first to last:
 clojure -M:test -n clojure-course.building-a-language.ex-03-env-lookup-test
 ```
 
-**Starter file:** `src/clojure_course/building_a_language/ex_03_env_lookup.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/building_a_language/ex_03_env_lookup.clj`.

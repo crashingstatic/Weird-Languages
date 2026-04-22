@@ -38,4 +38,4 @@ a new Shape (via `reify`) whose area and perimeter are the sums of its parts.
 clojure -M:test -n clojure-course.polymorphism-and-protocols.ex-04-shape-protocol-test
 ```
 
-**Starter file:** `src/clojure_course/polymorphism_and_protocols/ex_04_shape_protocol.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/polymorphism_and_protocols/ex_04_shape_protocol.clj`.

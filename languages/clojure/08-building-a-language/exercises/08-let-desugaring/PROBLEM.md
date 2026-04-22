@@ -35,4 +35,4 @@ return data — they do not call eval themselves.
 clojure -M:test -n clojure-course.building-a-language.ex-08-let-desugaring-test
 ```
 
-**Starter file:** `src/clojure_course/building_a_language/ex_08_let_desugaring.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/building_a_language/ex_08_let_desugaring.clj`.

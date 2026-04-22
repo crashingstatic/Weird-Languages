@@ -35,4 +35,4 @@ Implement:
 clojure -M:test -n clojure-course.data-and-abstraction.ex-06-deck-of-cards-test
 ```
 
-**Starter file:** `src/clojure_course/data_and_abstraction/ex_06_deck_of_cards.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/data_and_abstraction/ex_06_deck_of_cards.clj`.

@@ -34,4 +34,4 @@ Implement:
 clojure -M:test -n clojure-course.polymorphism-and-protocols.ex-09-tagged-arithmetic-test
 ```
 
-**Starter file:** `src/clojure_course/polymorphism_and_protocols/ex_09_tagged_arithmetic.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/polymorphism_and_protocols/ex_09_tagged_arithmetic.clj`.

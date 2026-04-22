@@ -23,4 +23,4 @@ body to prove the body is not evaluated when the condition is truthy.
 clojure -M:test -n clojure-course.macros-and-code-as-data.ex-04-when-not-from-scratch-test
 ```
 
-**Starter file:** `src/clojure_course/macros_and_code_as_data/ex_04_when_not_from_scratch.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/macros_and_code_as_data/ex_04_when_not_from_scratch.clj`.

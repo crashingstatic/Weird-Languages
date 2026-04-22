@@ -36,4 +36,4 @@ From `languages/clojure/`:
 clojure -M:test -n clojure-course.functional-foundations.ex-06-power-recursive-test
 ```
 
-Your starter file: `src/clojure_course/functional_foundations/ex_06_power_recursive.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/functional_foundations/ex_06_power_recursive.clj`.

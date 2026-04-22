@@ -34,4 +34,4 @@ Fill in the blanks to:
 clojure -M:test -n clojure-course.polymorphism-and-protocols.ex-03-defrecord-person-test
 ```
 
-**Starter file:** `src/clojure_course/polymorphism_and_protocols/ex_03_defrecord_person.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/polymorphism_and_protocols/ex_03_defrecord_person.clj`.

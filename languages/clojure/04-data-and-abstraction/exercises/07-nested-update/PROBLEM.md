@@ -39,4 +39,4 @@ Implement:
 clojure -M:test -n clojure-course.data-and-abstraction.ex-07-nested-update-test
 ```
 
-**Starter file:** `src/clojure_course/data_and_abstraction/ex_07_nested_update.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/data_and_abstraction/ex_07_nested_update.clj`.

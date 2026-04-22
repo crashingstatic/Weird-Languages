@@ -36,4 +36,4 @@ From `languages/clojure/`:
 clojure -M:test -n clojure-course.functional-foundations.ex-09-fib-two-ways-test
 ```
 
-Your starter file: `src/clojure_course/functional_foundations/ex_09_fib_two_ways.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/functional_foundations/ex_09_fib_two_ways.clj`.

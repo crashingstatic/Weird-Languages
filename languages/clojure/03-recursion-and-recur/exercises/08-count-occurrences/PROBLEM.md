@@ -31,4 +31,4 @@ A "leaf" is anything that is not sequential.
 clojure -M:test -n clojure-course.recursion-and-recur.ex-08-count-occurrences-test
 ```
 
-**Starter file:** `src/clojure_course/recursion_and_recur/ex_08_count_occurrences.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/recursion_and_recur/ex_08_count_occurrences.clj`.

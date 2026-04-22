@@ -30,4 +30,4 @@ the accumulator's initial value and the `recur` step.
 clojure -M:test -n clojure-course.recursion-and-recur.ex-03-accumulator-pattern-test
 ```
 
-**Starter file:** `src/clojure_course/recursion_and_recur/ex_03_accumulator_pattern.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/recursion_and_recur/ex_03_accumulator_pattern.clj`.

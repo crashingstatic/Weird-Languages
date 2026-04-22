@@ -26,4 +26,4 @@ total balance invariant.
 clojure -M:test -n clojure-course.state-identity-concurrency.ex-10-deadlock-and-fix-test
 ```
 
-**Starter file:** `src/clojure_course/state_identity_concurrency/ex_10_deadlock_and_fix.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/state_identity_concurrency/ex_10_deadlock_and_fix.clj`.

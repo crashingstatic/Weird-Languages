@@ -32,4 +32,4 @@ multimethod version instead.
 clojure -M:test -n clojure-course.polymorphism-and-protocols.ex-06-when-to-use-which-test
 ```
 
-**Starter file:** `src/clojure_course/polymorphism_and_protocols/ex_06_when_to_use_which.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/polymorphism_and_protocols/ex_06_when_to_use_which.clj`.

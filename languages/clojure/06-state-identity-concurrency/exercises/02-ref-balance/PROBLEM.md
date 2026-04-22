@@ -25,4 +25,4 @@ Fill in the blanks to implement:
 clojure -M:test -n clojure-course.state-identity-concurrency.ex-02-ref-balance-test
 ```
 
-**Starter file:** `src/clojure_course/state_identity_concurrency/ex_02_ref_balance.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/state_identity_concurrency/ex_02_ref_balance.clj`.

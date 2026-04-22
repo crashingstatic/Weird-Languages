@@ -41,4 +41,4 @@ numbers; rationals as `[numerator denominator]`; reals as doubles.
 clojure -M:test -n clojure-course.polymorphism-and-protocols.ex-10-generic-arithmetic-test
 ```
 
-**Starter file:** `src/clojure_course/polymorphism_and_protocols/ex_10_generic_arithmetic.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/polymorphism_and_protocols/ex_10_generic_arithmetic.clj`.

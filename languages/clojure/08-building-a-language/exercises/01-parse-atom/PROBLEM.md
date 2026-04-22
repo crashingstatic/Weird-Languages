@@ -26,4 +26,4 @@ which converts a single string token into the correct Clojure value:
 clojure -M:test -n clojure-course.building-a-language.ex-01-parse-atom-test
 ```
 
-**Starter file:** `src/clojure_course/building_a_language/ex_01_parse_atom.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/building_a_language/ex_01_parse_atom.clj`.

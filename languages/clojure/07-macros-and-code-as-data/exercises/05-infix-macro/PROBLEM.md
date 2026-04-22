@@ -27,4 +27,4 @@ Only handles simple three-element expressions (no precedence needed).
 clojure -M:test -n clojure-course.macros-and-code-as-data.ex-05-infix-macro-test
 ```
 
-**Starter file:** `src/clojure_course/macros_and_code_as_data/ex_05_infix_macro.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/macros_and_code_as_data/ex_05_infix_macro.clj`.

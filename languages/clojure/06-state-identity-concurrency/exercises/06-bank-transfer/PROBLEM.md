@@ -25,4 +25,4 @@ invariant.
 clojure -M:test -n clojure-course.state-identity-concurrency.ex-06-bank-transfer-test
 ```
 
-**Starter file:** `src/clojure_course/state_identity_concurrency/ex_06_bank_transfer.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/state_identity_concurrency/ex_06_bank_transfer.clj`.

@@ -35,4 +35,4 @@ selectors, never peek at the representation directly.
 clojure -M:test -n clojure-course.data-and-abstraction.ex-04-point-2d-abstract-test
 ```
 
-**Starter file:** `src/clojure_course/data_and_abstraction/ex_04_point_2d_abstract.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/data_and_abstraction/ex_04_point_2d_abstract.clj`.

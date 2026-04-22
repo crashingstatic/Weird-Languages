@@ -24,4 +24,4 @@ Fill in the body of `unless`. It should expand to `if` with branches swapped:
 clojure -M:test -n clojure-course.macros-and-code-as-data.ex-02-unless-macro-test
 ```
 
-**Starter file:** `src/clojure_course/macros_and_code_as_data/ex_02_unless_macro.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/macros_and_code_as_data/ex_02_unless_macro.clj`.

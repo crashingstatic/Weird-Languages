@@ -27,4 +27,4 @@ event, it looks up the transition; if none exists, the state is unchanged.
 clojure -M:test -n clojure-course.macros-and-code-as-data.ex-09-state-machine-dsl-test
 ```
 
-**Starter file:** `src/clojure_course/macros_and_code_as_data/ex_09_state_machine_dsl.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/macros_and_code_as_data/ex_09_state_machine_dsl.clj`.

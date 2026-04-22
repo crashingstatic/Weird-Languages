@@ -1,0 +1,1 @@
+../../../test/clojure_course/polymorphism_and_protocols/ex_10_generic_arithmetic_test.clj

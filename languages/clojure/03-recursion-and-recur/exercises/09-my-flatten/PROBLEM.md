@@ -34,4 +34,4 @@ Do not use `clojure.core/flatten`.
 clojure -M:test -n clojure-course.recursion-and-recur.ex-09-my-flatten-test
 ```
 
-**Starter file:** `src/clojure_course/recursion_and_recur/ex_09_my_flatten.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/recursion_and_recur/ex_09_my_flatten.clj`.

@@ -33,4 +33,4 @@ From `languages/clojure/`:
 clojure -M:test -n clojure-course.functional-foundations.ex-08-fast-power-test
 ```
 
-Your starter file: `src/clojure_course/functional_foundations/ex_08_fast_power.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/functional_foundations/ex_08_fast_power.clj`.

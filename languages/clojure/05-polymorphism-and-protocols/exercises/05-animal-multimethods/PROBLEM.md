@@ -40,4 +40,4 @@ Animals are maps like `{:species ::cat :name "Whiskers"}`.
 clojure -M:test -n clojure-course.polymorphism-and-protocols.ex-05-animal-multimethods-test
 ```
 
-**Starter file:** `src/clojure_course/polymorphism_and_protocols/ex_05_animal_multimethods.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/polymorphism_and_protocols/ex_05_animal_multimethods.clj`.

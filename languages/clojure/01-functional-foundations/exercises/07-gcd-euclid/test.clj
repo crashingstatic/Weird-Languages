@@ -1,0 +1,1 @@
+../../../test/clojure_course/functional_foundations/ex_07_gcd_euclid_test.clj

@@ -22,4 +22,4 @@ self-evaluating, return it unchanged.
 clojure -M:test -n clojure-course.building-a-language.ex-02-eval-self-evaluating-test
 ```
 
-**Starter file:** `src/clojure_course/building_a_language/ex_02_eval_self_evaluating.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/building_a_language/ex_02_eval_self_evaluating.clj`.

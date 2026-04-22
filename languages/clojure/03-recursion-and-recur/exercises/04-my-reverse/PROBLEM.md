@@ -32,4 +32,4 @@ Do not use `clojure.core/reverse` or `clojure.core/rseq`.
 clojure -M:test -n clojure-course.recursion-and-recur.ex-04-my-reverse-test
 ```
 
-**Starter file:** `src/clojure_course/recursion_and_recur/ex_04_my_reverse.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/recursion_and_recur/ex_04_my_reverse.clj`.

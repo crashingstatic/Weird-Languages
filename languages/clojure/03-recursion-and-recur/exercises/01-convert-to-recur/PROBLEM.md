@@ -34,4 +34,4 @@ already in place — you need to fill in the blanks.
 clojure -M:test -n clojure-course.recursion-and-recur.ex-01-convert-to-recur-test
 ```
 
-**Starter file:** `src/clojure_course/recursion_and_recur/ex_01_convert_to_recur.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/recursion_and_recur/ex_01_convert_to_recur.clj`.

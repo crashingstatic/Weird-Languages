@@ -30,4 +30,4 @@ Use auto-gensym (`start#`, `result#`) to avoid capturing user variables named
 clojure -M:test -n clojure-course.macros-and-code-as-data.ex-06-with-timing-test
 ```
 
-**Starter file:** `src/clojure_course/macros_and_code_as_data/ex_06_with_timing.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/macros_and_code_as_data/ex_06_with_timing.clj`.

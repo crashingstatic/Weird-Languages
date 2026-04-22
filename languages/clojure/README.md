@@ -109,25 +109,34 @@ Clojure from scratch.
 
 ## How exercises work
 
-Each exercise has three parts spread across the standard Clojure layout:
+Everything you need for a single exercise lives in one folder:
 
 ```
 01-functional-foundations/exercises/05-newton-sqrt/
-├── PROBLEM.md                          # what to build and why
+├── PROBLEM.md      # what to build and why
+├── starter.clj     # your working file — edit this
+├── test.clj        # behavioral tests — read-only
 └── .solutions/
-    └── solution.clj                    # reference implementation
-
-src/clojure_course/functional_foundations/
-└── ex_05_newton_sqrt.clj               # your working file (starter)
-
-test/clojure_course/functional_foundations/
-└── ex_05_newton_sqrt_test.clj          # behavioral tests (read-only)
+    └── solution.clj    # reference implementation
 ```
 
+`starter.clj` and `test.clj` are **symlinks** into the standard Clojure source
+layout — the real files live at `src/clojure_course/<aspect>/ex_NN_<name>.clj`
+and `test/clojure_course/<aspect>/ex_NN_<name>_test.clj`, because that's where
+the Clojure CLI expects to find them on the classpath. Editing either the
+symlink or the real file does the same thing; the symlinks are just so you
+don't have to hunt across three directory trees for every exercise.
+
 1. Read `PROBLEM.md`.
-2. Edit the starter file in `src/`.
+2. Edit `starter.clj` in the same folder.
 3. Run the test command from `PROBLEM.md`.
 4. Iterate until tests pass.
+
+> If you cloned the repo on a Windows host without symlink support enabled in
+> Git, `starter.clj` and `test.clj` may appear as small text files containing
+> the target path instead of real symlinks. In that case, edit the real file
+> under `src/clojure_course/...` directly, or enable Git symlinks:
+> `git config --global core.symlinks true` and re-clone.
 
 ### About solutions
 

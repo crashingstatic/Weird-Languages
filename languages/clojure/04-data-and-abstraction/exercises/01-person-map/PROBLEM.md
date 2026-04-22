@@ -31,4 +31,4 @@ person  ;; a map with :name, :age, :email
 clojure -M:test -n clojure-course.data-and-abstraction.ex-01-person-map-test
 ```
 
-**Starter file:** `src/clojure_course/data_and_abstraction/ex_01_person_map.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/data_and_abstraction/ex_01_person_map.clj`.

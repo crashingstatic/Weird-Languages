@@ -1,2 +1,4 @@
 .claude/
 .cpcache/
+.clj-kondo
+.lsp

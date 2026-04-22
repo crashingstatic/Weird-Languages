@@ -24,4 +24,4 @@ the binding in the **first** frame. Returns the value.
 clojure -M:test -n clojure-course.building-a-language.ex-04-extend-env-and-define-test
 ```
 
-**Starter file:** `src/clojure_course/building_a_language/ex_04_extend_env_and_define.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/building_a_language/ex_04_extend_env_and_define.clj`.

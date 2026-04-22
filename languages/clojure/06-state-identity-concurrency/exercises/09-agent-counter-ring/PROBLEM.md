@@ -27,4 +27,4 @@ Build a ring of N agents:
 clojure -M:test -n clojure-course.state-identity-concurrency.ex-09-agent-counter-ring-test
 ```
 
-**Starter file:** `src/clojure_course/state_identity_concurrency/ex_09_agent_counter_ring.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/state_identity_concurrency/ex_09_agent_counter_ring.clj`.

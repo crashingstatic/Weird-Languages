@@ -26,4 +26,4 @@ Evaluates the body forms only if `n` is positive. Returns nil otherwise.
 clojure -M:test -n clojure-course.macros-and-code-as-data.ex-03-when-positive-test
 ```
 
-**Starter file:** `src/clojure_course/macros_and_code_as_data/ex_03_when_positive.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/macros_and_code_as_data/ex_03_when_positive.clj`.

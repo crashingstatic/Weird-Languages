@@ -1,0 +1,1 @@
+../../../test/clojure_course/polymorphism_and_protocols/ex_05_animal_multimethods_test.clj

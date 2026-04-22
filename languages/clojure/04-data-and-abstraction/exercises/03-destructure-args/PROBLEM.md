@@ -37,4 +37,4 @@ Rewrite two functions to use destructuring in their argument lists:
 clojure -M:test -n clojure-course.data-and-abstraction.ex-03-destructure-args-test
 ```
 
-**Starter file:** `src/clojure_course/data_and_abstraction/ex_03_destructure_args.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/data_and_abstraction/ex_03_destructure_args.clj`.

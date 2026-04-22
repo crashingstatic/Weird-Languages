@@ -38,4 +38,4 @@ Implement two multimethods:
 clojure -M:test -n clojure-course.polymorphism-and-protocols.ex-07-expr-eval-multi-test
 ```
 
-**Starter file:** `src/clojure_course/polymorphism_and_protocols/ex_07_expr_eval_multi.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/polymorphism_and_protocols/ex_07_expr_eval_multi.clj`.

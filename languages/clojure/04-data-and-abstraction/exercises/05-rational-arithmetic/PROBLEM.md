@@ -36,4 +36,4 @@ Implement a rational number package:
 clojure -M:test -n clojure-course.data-and-abstraction.ex-05-rational-arithmetic-test
 ```
 
-**Starter file:** `src/clojure_course/data_and_abstraction/ex_05_rational_arithmetic.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/data_and_abstraction/ex_05_rational_arithmetic.clj`.

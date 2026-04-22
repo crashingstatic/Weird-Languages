@@ -34,4 +34,4 @@ Create three record types:
 clojure -M:test -n clojure-course.polymorphism-and-protocols.ex-08-tree-visitor-test
 ```
 
-**Starter file:** `src/clojure_course/polymorphism_and_protocols/ex_08_tree_visitor.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/polymorphism_and_protocols/ex_08_tree_visitor.clj`.

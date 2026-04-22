@@ -24,4 +24,4 @@ what is broken.
 clojure -M:test -n clojure-course.building-a-language.ex-09-closures-and-lexical-scope-test
 ```
 
-**Starter file:** `src/clojure_course/building_a_language/ex_09_closures_and_lexical_scope.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/building_a_language/ex_09_closures_and_lexical_scope.clj`.

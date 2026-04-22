@@ -32,4 +32,4 @@ Fill in the blanks to:
 clojure -M:test -n clojure-course.polymorphism-and-protocols.ex-02-defprotocol-greet-test
 ```
 
-**Starter file:** `src/clojure_course/polymorphism_and_protocols/ex_02_defprotocol_greet.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/polymorphism_and_protocols/ex_02_defprotocol_greet.clj`.

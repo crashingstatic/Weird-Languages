@@ -26,4 +26,4 @@ Fill in the blanks:
 clojure -M:test -n clojure-course.macros-and-code-as-data.ex-01-quote-and-unquote-test
 ```
 
-**Starter file:** `src/clojure_course/macros_and_code_as_data/ex_01_quote_and_unquote.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/macros_and_code_as_data/ex_01_quote_and_unquote.clj`.

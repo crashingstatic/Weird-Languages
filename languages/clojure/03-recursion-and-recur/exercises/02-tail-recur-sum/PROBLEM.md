@@ -29,4 +29,4 @@ Implement `running-sum`: given a sequence of numbers, return their sum. A
 clojure -M:test -n clojure-course.recursion-and-recur.ex-02-tail-recur-sum-test
 ```
 
-**Starter file:** `src/clojure_course/recursion_and_recur/ex_02_tail_recur_sum.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/recursion_and_recur/ex_02_tail_recur_sum.clj`.

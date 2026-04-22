@@ -38,4 +38,4 @@ Implement an interval arithmetic package:
 clojure -M:test -n clojure-course.data-and-abstraction.ex-09-interval-arithmetic-test
 ```
 
-**Starter file:** `src/clojure_course/data_and_abstraction/ex_09_interval_arithmetic.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/data_and_abstraction/ex_09_interval_arithmetic.clj`.

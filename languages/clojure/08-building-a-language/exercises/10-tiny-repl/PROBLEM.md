@@ -26,4 +26,4 @@ The complete parser and evaluator are provided.
 clojure -M:test -n clojure-course.building-a-language.ex-10-tiny-repl-test
 ```
 
-**Starter file:** `src/clojure_course/building_a_language/ex_10_tiny_repl.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/building_a_language/ex_10_tiny_repl.clj`.

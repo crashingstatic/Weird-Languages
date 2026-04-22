@@ -33,4 +33,4 @@ tree unchanged).
 clojure -M:test -n clojure-course.data-and-abstraction.ex-08-binary-tree-of-data-test
 ```
 
-**Starter file:** `src/clojure_course/data_and_abstraction/ex_08_binary_tree_of_data.clj`
+**Your working file:** [starter.clj](starter.clj) in this folder — a symlink to `src/clojure_course/data_and_abstraction/ex_08_binary_tree_of_data.clj`.
